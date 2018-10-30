@@ -1,0 +1,48 @@
+{
+    "name": "hunt-imf",
+    "description": "A tcp-server framework.",
+    "copyright": "Copyright (c) 2017-2018, huntframework.com",
+    "homepage": "http://www.huntframework.com/",
+    "license": "Apache-2.0",
+    "dependencies": {
+        "protobuf": "~>0.3.1",
+        "hunt-net": "~>0.0.3"
+    },
+    "configurations":[
+        {
+            "name" : "hunt-imf",
+            "targetType": "library"
+    
+        },
+        {
+            "targetName": "helloworld",
+            "name": "helloworld",
+            "targetType": "executable",
+            "sourceFiles": [
+                "./example/helloworld/bootstrap.d",
+                "./example/helloworld/command.d",
+                "./example/helloworld/helloworld.d"
+            ]
+        },
+        {
+            "targetName": "chatclient",
+            "name": "chatclient",
+            "targetType": "executable",
+            "sourceFiles": [
+                "./example/chatroom/chatroom.d",
+                "./example/chatroom/command.d",
+                "./example/chatroom/client/client.d"
+            ]
+        },
+        {
+            "targetName": "chatserver",
+            "name": "chatserver",
+            "targetType": "executable",
+            "sourceFiles": [
+                "./example/chatroom/chatroom.d",
+                "./example/chatroom/command.d",
+                "./example/chatroom/server/server.d"
+            ]
+        }
+    ]
+}
