@@ -27,19 +27,19 @@ hunt-imf is a tcp-based instant messaging framework and can be used for Push ser
 ## Quick start
 ### Proto
 * define a `.proto` file named `helloworld.proto`:
-   ```proto
-  syntax = "proto3";
-  package helloworld;
+```proto
+syntax = "proto3";
+package helloworld;
 
-  // The request message containing the user's name.
-  message HelloRequest {
-    string name = 1;
-  }
+// The request message containing the user's name.
+message HelloRequest {
+ string name = 1;
+}
 
-  // The response message containing the greetings
-  message HelloReply {
-    string message = 1;
-  }
+// The response message containing the greetings
+message HelloReply {
+ string message = 1;
+}
    ```
 * using `protoc` and `protoc-gen-d` compiles `helloworld.proto` to `hellowrold.d`:
 ```shell
