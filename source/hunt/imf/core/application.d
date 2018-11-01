@@ -1,9 +1,9 @@
-module imf.core.application;
+module hunt.imf.core.application;
 
-import imf.core.dispatcher;
-import imf.io.server;
-import imf.io.client;
-import imf.io.context;
+import hunt.imf.core.dispatcher;
+import hunt.imf.io.server;
+import hunt.imf.io.client;
+import hunt.imf.io.context;
 
 
 class Application

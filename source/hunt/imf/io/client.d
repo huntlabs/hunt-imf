@@ -1,11 +1,11 @@
-module imf.io.client;
+module hunt.imf.io.client;
 
 import hunt.net;
 
-import imf.core.dispatcher;
-import imf.protocol.parser;
-import imf.protocol.packet;
-import imf.io.context;
+import hunt.imf.core.dispatcher;
+import hunt.imf.protocol.parser;
+import hunt.imf.protocol.packet;
+import hunt.imf.io.context;
 
 
 

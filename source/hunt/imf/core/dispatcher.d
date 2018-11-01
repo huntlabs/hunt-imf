@@ -1,8 +1,8 @@
-module imf.core.dispatcher;
+module hunt.imf.core.dispatcher;
 
-import imf.io.context;
-import imf.protocol.packet;
-import imf.core.task;
+import hunt.imf.io.context;
+import hunt.imf.protocol.packet;
+import hunt.imf.core.task;
 
 import std.parallelism:totalCPUs;
 

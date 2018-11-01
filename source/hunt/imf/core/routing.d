@@ -1,4 +1,4 @@
-module imf.core.routing;
+module hunt.imf.core.routing;
 
 import std.traits;
 import std.conv;

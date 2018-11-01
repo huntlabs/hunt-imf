@@ -1,6 +1,6 @@
-module imf.protocol.parser;
+module hunt.imf.protocol.parser;
 
-import imf.protocol.packet;
+import hunt.imf.protocol.packet;
 
 import std.bitmanip;
 import std.stdint;

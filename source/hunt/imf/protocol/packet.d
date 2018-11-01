@@ -1,4 +1,4 @@
-module imf.protocol.packet;
+module hunt.imf.protocol.packet;
 
 import std.stdint;
 import std.bitmanip;
