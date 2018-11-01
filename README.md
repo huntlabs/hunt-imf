@@ -26,7 +26,7 @@ hunt-imf is a tcp-based instant messaging framework and can be used for Push ser
 
 ## Quick start
 ### Proto
-* define a `.proto` file named `helloworld.proto` below:
+* define a `.proto` file named `helloworld.proto`:
    ```proto
   syntax = "proto3";
   package helloworld;
@@ -47,7 +47,7 @@ hunt-imf is a tcp-based instant messaging framework and can be used for Push ser
 ```
 
 ### COMMAND
-define a `dlang` source file named command.d  blew:
+define a `dlang` source file named command.d:
  ```D
  enum COMMAND
  {
@@ -58,7 +58,7 @@ define a `dlang` source file named command.d  blew:
 
 
 ### Controller
-* define a server side control class like this:
+* define a server side control class:
 ```D
 class ServerController
 {
@@ -74,7 +74,7 @@ class ServerController
     }
 }
 ```
-* define a client size control class like this:
+* define a client size control class:
 ```D
 class ClientController
 {
