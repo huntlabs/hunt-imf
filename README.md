@@ -41,7 +41,7 @@ hunt-imf is a tcp-based instant messaging framework and can be used for Push ser
     string message = 1;
   }
    ```
-* using `protoc` and `protoc-gen-d` compiles `helloworld.proto` to `hellowrold.d` , command below:
+* using `protoc` and `protoc-gen-d` compiles `helloworld.proto` to `hellowrold.d`:
 ```shell
 ./protoc --plugin="protoc-gen-d" --d_out=~/example/  -I~/example/hellowrold ~/hellworld.proto
 ```
