@@ -12,7 +12,7 @@ hunt-imf is a tcp-based instant messaging framework and can be used for Push ser
 
 ## Tools
 * `protoc`  *apt-get install protoc-compile*
-* [protoc-gen-d](https://github.com/dcarp/protobuf-d/tree/master/protoc_gen_d)
+* [protoc-gen-d](https://github.com/dcarp/protobuf-d/tree/master/protoc_gen_d) *plugin generates D code for proto3 .proto files only*
 
 ## examples
 * `helloworld` *An executable program containing the server and the client*
