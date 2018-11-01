@@ -80,7 +80,7 @@ class ClientController
 {
     mixin MakeRouter;
 
-    @route(Command.R_HELO)
+    @route(Command.HELO_RES)
     void hello(HelloReply reply)
     {
         writeln(reply.message);
