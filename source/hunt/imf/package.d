@@ -9,3 +9,7 @@ public import hunt.imf.io.server;
 
 public import hunt.imf.protocol.packet;
 
+public import hunt.imf.utils.room;
+public import hunt.imf.utils.element;
+public import hunt.imf.utils.singleton;
+

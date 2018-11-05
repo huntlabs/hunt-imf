@@ -19,9 +19,9 @@
             "name": "helloworld",
             "targetType": "executable",
             "sourceFiles": [
-                "./example/helloworld/bootstrap.d",
-                "./example/helloworld/command.d",
-                "./example/helloworld/helloworld.d"
+                "./examples/helloworld/bootstrap.d",
+                "./examples/helloworld/command.d",
+                "./examples/helloworld/helloworld.d"
             ]
         },
         {
@@ -29,9 +29,9 @@
             "name": "chatclient",
             "targetType": "executable",
             "sourceFiles": [
-                "./example/chatroom/chatroom.d",
-                "./example/chatroom/command.d",
-                "./example/chatroom/client/client.d"
+                "./examples/chatroom/chatroom.d",
+                "./examples/chatroom/command.d",
+                "./examples/chatroom/client/client.d"
             ]
         },
         {
@@ -39,9 +39,9 @@
             "name": "chatserver",
             "targetType": "executable",
             "sourceFiles": [
-                "./example/chatroom/chatroom.d",
-                "./example/chatroom/command.d",
-                "./example/chatroom/server/server.d"
+                "./examples/chatroom/chatroom.d",
+                "./examples/chatroom/command.d",
+                "./examples/chatroom/server/server.d"
             ]
         }
     ]
