@@ -69,7 +69,7 @@ class ServerController
     {
         auto reply = new HelloReply();
         reply.message = "hello " ~ request.name;
-        sendMessage(context , Command.R_HELO , reply);
+        sendMessage(context , Command.HELO_RES , reply);
 
     }
 }
