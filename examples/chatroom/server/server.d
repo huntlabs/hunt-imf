@@ -35,31 +35,39 @@ class ChatService
 
     @route(Command.Q_LOGIN)
     void mylogin(Login login)
-    {
-        auto info = new UserInfo(context , login.name);
-        if(ChatRoom.instance.join(login.name , info))
-        {
-            /// notify onlines this one login , except this one.
-            ChatRoom.instance.broadCast(Command.LOGIN , login , login.name);
- 
-            /// rely to this one login suc. 
-            auto reply = new LoginReply();
-            reply.status = LoginReply.LoginState.OK;
-            reply.name = login.name;
-            context.sendMessage(Command.R_LOGIN , reply);
+    {  
+        ChatRoom.instance.findEx(login.name , 
+            (UserInfo info){
+            if(info is null)
+            {
+                auto user = new UserInfo(context , login.name);
+                ChatRoom.instance.add(login.name, user);
 
-            /// join in room
-            context.setAttachment(info);
+                /// notify onlines this one login , except this one.
+                ChatRoom.instance.broadCast(Command.LOGIN , login , login.name);
 
-            writeln(login.name , " login");
-        }
-        else
-        {
-            auto reply = new LoginReply();
-            reply.name = login.name;
-            reply.status = LoginReply.LoginState.FAIL;
-            sendMessage(context , Command.R_LOGIN , reply);
-        }
+                /// rely to this one login suc. 
+                auto reply = new LoginReply();
+                reply.status = LoginReply.LoginState.OK;
+                reply.name = login.name;
+                context.sendMessage(Command.R_LOGIN , reply);
+
+                /// set context bind
+                context.setAttachment(user);
+
+                writeln(login.name , " login");
+                bSuc = true;
+            }
+            else
+            {
+                auto reply = new LoginReply();
+                reply.name = login.name;
+                reply.status = LoginReply.LoginState.FAIL;
+                sendMessage(context , Command.R_LOGIN , reply);
+            }
+        });
+
+      
     }
 
 }

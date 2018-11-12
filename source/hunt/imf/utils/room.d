@@ -5,12 +5,19 @@ import hunt.imf.io.context;
 
 class Room(K = size_t , E = Element) if ( is(E == Element) ||  is(BaseClassesTuple!E[$-2] == Element) )
 {
-    bool exists(K key) const
+    bool exists(K key) 
     {
-        return get(key) !is null;      
+        synchronized(this)
+        {
+            auto e = key in _hash;
+            if(e is null)
+                return false;
+            else
+                return true;
+        }
     }
 
-    bool join(K key ,  E entity)
+    bool add(K key ,  E entity)
     {  
         synchronized(this)
         {
@@ -21,22 +28,23 @@ class Room(K = size_t , E = Element) if ( is(E == Element) ||  is(BaseClassesTup
         }
     }
 
+    void findEx(K key , void delegate(E e) dele)
+    {
+        synchronized(this)
+        {
+            auto e = key in _hash;
+            if( e is null)
+                dele(null);
+            else
+                dele(*e);
+        }
+    }
+
     bool remove(K key)
     {
         synchronized(this)
         {
             return _hash.remove(key);
-        }
-    }
-
-    const (E) get(K key) const
-    {
-        synchronized(this)
-        {
-            auto e = key in _hash;
-            if( e !is null)
-                return cast(const)(*e);
-            return null;
         }
     }
 
