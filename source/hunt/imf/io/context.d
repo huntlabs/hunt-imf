@@ -83,3 +83,8 @@ void sendMessage(Context context,int64_t message_id)
     auto data = packet.data;
     context.sock.write(packet.data);
 }
+
+void close(Context context)
+{
+    context.sock.close();
+}

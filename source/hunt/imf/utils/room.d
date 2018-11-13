@@ -3,7 +3,7 @@ import hunt.imf.utils.element;
 import std.traits;
 import hunt.imf.io.context;
 
-class Room(K = size_t , E = Element) if ( is(E == Element) ||  is(BaseClassesTuple!E[$-2] == Element) )
+class Room(K = size_t , E = Element) 
 {
     bool exists(K key) 
     {
@@ -48,32 +48,38 @@ class Room(K = size_t , E = Element) if ( is(E == Element) ||  is(BaseClassesTup
         }
     }
 
-    void broadCast(C )(C c , K[] excepts...) const
+    static if ( is(E == Element) ||  is(BaseClassesTuple!E[$-2] == Element)) 
     {
-        synchronized(this)
+       void broadCast(C )(C c , K[] excepts...) const 
         {
-            import std.algorithm.searching; 
-            foreach(k , ref v ; _hash)
+            synchronized(this)
             {
-                if(find!(" a == b")(excepts , k).length == 0)
-                    v.context.sendMessage( c);
+                import std.algorithm.searching; 
+                foreach(k , ref v ; _hash)
+                {
+                    if(find!(" a == b")(excepts , k).length == 0)
+                        v.context.sendMessage( c);
+                }
             }
         }
     }
 
-    void broadCast(C , T)(C c , T t ,  K[] excepts...) 
+    static if ( is(E == Element) ||  is(BaseClassesTuple!E[$-2] == Element))
     {
-        synchronized(this)
+        void broadCast(C , T)(C c , T t ,  K[] excepts...) 
         {
-            import std.algorithm.searching; 
-            foreach(k , ref v ; _hash)
+            synchronized(this)
             {
-                if(find!(" a == b")(excepts , k).length == 0)
-                    v.context.sendMessage(c , t);
+                import std.algorithm.searching; 
+                foreach(k , ref v ; _hash)
+                {
+                    if(find!(" a == b")(excepts , k).length == 0)
+                        v.context.sendMessage(c , t);
+                }
             }
         }
-    }
-
+    } 
+    
     void traverse(void delegate(  K , const   E) dele) 
     {
         synchronized(this)

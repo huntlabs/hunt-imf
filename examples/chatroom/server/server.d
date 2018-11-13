@@ -56,7 +56,6 @@ class ChatService
                 context.setAttachment(user);
 
                 writeln(login.name , " login");
-                bSuc = true;
             }
             else
             {
