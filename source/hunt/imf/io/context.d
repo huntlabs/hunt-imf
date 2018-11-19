@@ -70,18 +70,18 @@ void setContext(Context context)
     g_context = context;
 }
 
-void sendMessage(M)(Context context,int64_t message_id , M m)
+void sendMessage(M)(Context context,int64_t message_id , M m , VoidHandler finish = null)
 {
     auto packet = new Packet(message_id ,  m.toProtobuf.array);
     auto data = packet.data;
-    context.sock.write(packet.data);
+    context.sock.write(packet.data , finish);
 }
 
-void sendMessage(Context context,int64_t message_id)
+void sendMessage(Context context,int64_t message_id ,VoidHandler finish = null )
 {
     auto packet = new Packet(message_id);
     auto data = packet.data;
-    context.sock.write(packet.data);
+    context.sock.write(packet.data,finish);
 }
 
 void close(Context context)

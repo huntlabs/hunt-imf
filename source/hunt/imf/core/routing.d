@@ -71,7 +71,7 @@ string __MakeRouter0(T)()
             {   
                 str ~= "auto proto = new " ~ classArr[0].stringof ~"();"; 
                 str ~= "try{ data.fromProtobuf!"~classArr[0].stringof~"(proto); " ~m~ "(proto); }";
-				str ~= "catch(Throwable e){} }";
+				str ~= "catch(Throwable e){ import hunt.logging;logError(e.msg);} }";
             }
         }   
     }
