@@ -20,11 +20,13 @@ class Server
 
     void listen(int port , string host = "127.0.0.1")
     {
-        _server.listen(port , host , (Result!NetServer result){
+        alias Server = hunt.net.Server.Server;
+        _server.listen(host , port , (Result!Server result){
             if(result.failed())
                 throw result.cause();
 
-        }).connectHandler((NetSocket sock){
+        });
+        _server.connectionHandler((NetSocket sock){
             auto tcp = cast(AsynchronousTcpSession)sock;
             auto context = new Context(_namespace , sock);
             tcp.attachObject(context);
