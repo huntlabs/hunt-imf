@@ -76,7 +76,7 @@ int main()
 {
     auto app = new Application();
   
-    auto server = app.createServer("127.0.0.1" , 3003);
+    auto server = app.createServer("0.0.0.0" , 3003);
     server.setCloseHandler((Context context){
         auto user = cast(UserInfo)context.getAttachment();
         if( user !is null)

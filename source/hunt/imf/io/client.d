@@ -6,6 +6,7 @@ import hunt.imf.core.dispatcher;
 import hunt.imf.protocol.parser;
 import hunt.imf.protocol.packet;
 import hunt.imf.io.context;
+import hunt.logging;
 
 
 
@@ -40,6 +41,11 @@ class Client
                     _dispatcher.dispatch(context , p);
                 });   
         });
+
+    }
+
+    void stop() {
+        _client.stop();
     }
 
     void setOpenHandler(OpenHandler handler)

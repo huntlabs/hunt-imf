@@ -5,6 +5,7 @@ import hunt.imf.io.server;
 import hunt.imf.io.client;
 import hunt.imf.io.context;
 
+import hunt.net.NetUtil;
 
 class Application
 {
@@ -33,15 +34,26 @@ class Application
         return client;
     }
 
-    void run()
+    void run(long timeout = -1)
     {
         _dispatcher.start();
         for(size_t i = 0 ; i < _servers.length ; i++)
             _servers[i].listen(_server_addrs[i].port , _server_addrs[i].host);   
         for(size_t i = 0 ; i < _clients.length ; i++)
             _clients[i].connect(_client_addrs[i].port , _client_addrs[i].host);
+        
+        NetUtil.startEventLoop(timeout);
     }
 
+    void stop() {
+        NetUtil.stopEventLoop();
+        _dispatcher.stop();
+        
+        for(size_t i = 0 ; i < _servers.length ; i++)
+            _servers[i].stop();   
+        for(size_t i = 0 ; i < _clients.length ; i++)
+            _clients[i].stop();
+    }
 
 
     private:
