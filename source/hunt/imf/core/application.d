@@ -36,13 +36,12 @@ class Application
 
     void run(long timeout = -1)
     {
+        NetUtil.startEventLoop(timeout);
         _dispatcher.start();
         for(size_t i = 0 ; i < _servers.length ; i++)
             _servers[i].listen(_server_addrs[i].port , _server_addrs[i].host);   
         for(size_t i = 0 ; i < _clients.length ; i++)
             _clients[i].connect(_client_addrs[i].port , _client_addrs[i].host);
-        
-        NetUtil.startEventLoop(timeout);
     }
 
     void stop() {

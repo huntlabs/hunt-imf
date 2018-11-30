@@ -82,21 +82,12 @@ int main() {
     showPromt();
 
     auto app = new Application();
-    void doSomething() {
-        // auto app = new Application();
-
-        auto client = app.createClient("127.0.0.1", 3003);
-        client.setOpenHandler((Context context) {
-            writeln("connected to server!");
-            ClientInfo.context = context;
-        });
-        app.run(50);
-    }
-
-    import std.parallelism;
-
-    auto clientTask = task(&doSomething);
-    taskPool.put(clientTask);
+    auto client = app.createClient("127.0.0.1", 3003);
+    client.setOpenHandler((Context context) {
+        writeln("connected to server!");
+        ClientInfo.context = context;
+    });
+    app.run(50);
 
     while ((c = strip(readln())) != "quit") {
         string[] params = c.split(" ");
