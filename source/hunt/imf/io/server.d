@@ -48,6 +48,10 @@ class Server
         });
     }
 
+    void stop() {
+        _server.stop();
+    }
+
     void setOpenHandler(OpenHandler handler)
     {
         _open = handler;
