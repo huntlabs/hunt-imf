@@ -9,7 +9,7 @@ import chatroom.chatroom;
 import std.stdio;
 import std.string;
 
-import hunt.util.thread;
+import hunt.concurrent.thread;
 
 class ClientInfo
 {

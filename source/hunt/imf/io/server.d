@@ -15,7 +15,7 @@ class Server
     {
         _namespace = ns;
         _dispatcher = dispatcher;
-        _server = NetUtil.createNetServer();
+        _server = NetUtil.createNetServer!(ServerThreadMode.Single)();
     }
 
     void listen(int port , string host = "127.0.0.1")
@@ -59,9 +59,9 @@ class Server
 
 
 private:
-    string          _namespace;
-    Dispatcher      _dispatcher;
-    NetServer       _server;
-    OpenHandler     _open;
-    CloseHandler    _close;
+    string             _namespace;
+    Dispatcher         _dispatcher;
+    AbstractServer     _server;
+    OpenHandler        _open;
+    CloseHandler       _close;
 }
