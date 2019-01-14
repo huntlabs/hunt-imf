@@ -12,7 +12,7 @@ import std.array;
 import std.stdio;
 import std.stdint;
 
-import hunt.lang.common;
+import hunt.Functions;
 
 alias VoidHandler = SimpleEventHandler;
 

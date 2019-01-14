@@ -8,7 +8,7 @@ import chatroom.chatroom;
 import std.stdio;
 import std.string;
 
-import hunt.concurrent.thread;
+import hunt.concurrency.thread;
 
 class ClientInfo {
     __gshared string name;
