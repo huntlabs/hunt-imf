@@ -6,7 +6,7 @@ import helloworld.helloworld;
 
 import std.stdio;
 
-import hunt.concurrent.thread;
+import hunt.concurrency.thread;
         
 class ServerService
 {
