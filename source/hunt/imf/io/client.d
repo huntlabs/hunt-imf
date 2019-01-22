@@ -33,7 +33,10 @@ class Client
         
         _client.connect(port , host ,0, (Result!NetSocket result){
             if(result.failed())
-                throw result.cause();
+            {
+                logError(result.cause.msg);
+                return;
+            }
             auto tcp = cast(AsynchronousTcpSession)result.result();
             auto context = new Context(_namespace , tcp);
             tcp.attachObject(context);
@@ -41,7 +44,6 @@ class Client
                 _open(context);
 
             tcp.closeHandler((){
-                logInfo("closeHandler");
                 if(_close !is null)
                     _close(context);
             });
