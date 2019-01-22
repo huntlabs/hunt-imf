@@ -8,7 +8,8 @@ import hunt.imf.protocol.packet;
 import hunt.imf.io.context;
 import hunt.logging;
 
-
+import std.socket;
+import std.conv;
 
 class Client
 {
@@ -21,6 +22,15 @@ class Client
 
     void connect(int port , string host = "127.0.0.1")
     {
+        string strPort = to!string(port);
+		AddressInfo[] arr = getAddressInfo(host , strPort , AddressInfoFlags.CANONNAME);
+		if(arr.length == 0 && arr[0].family == AF_INET)
+		{
+			throw new Exception("can't parse " ~ host ~ " or ipv6");
+		}
+    
+        host = arr[0].address.toAddrString;
+        
         _client.connect(port , host ,0, (Result!NetSocket result){
             if(result.failed())
                 throw result.cause();
