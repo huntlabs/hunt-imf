@@ -3,6 +3,7 @@ module hunt.imf.core.application;
 import hunt.imf.core.dispatcher;
 import hunt.imf.io.server;
 import hunt.imf.io.client;
+import hunt.imf.io.clientext;
 import hunt.imf.io.context;
 
 import hunt.net.NetUtil;
@@ -28,6 +29,16 @@ class Application
     Client createClient(string host , int port , string namespace_="")
     {
         auto client = new Client(_dispatcher ,namespace_ );
+        _clients ~= client;
+        Addr addr = {host , port};
+        _client_addrs ~= addr;
+        return client;
+    }
+
+    /// supported reconnect.
+    Client createClientExt(string host , int port , string namespace_ = "")
+    {
+        auto client = new ClientExt(_dispatcher ,namespace_ );
         _clients ~= client;
         Addr addr = {host , port};
         _client_addrs ~= addr;

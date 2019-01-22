@@ -31,6 +31,7 @@ class Client
                 _open(context);
 
             tcp.closeHandler((){
+                logInfo("closeHandler");
                 if(_close !is null)
                     _close(context);
             });
@@ -57,7 +58,7 @@ class Client
         _close = handler;
     }
 
-private:
+protected:
     string          _namespace;
     Dispatcher      _dispatcher;
     NetClient       _client;

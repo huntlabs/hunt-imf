@@ -6,6 +6,7 @@ public import hunt.imf.core.routing;
 public import hunt.imf.io.context;
 public import hunt.imf.io.client;
 public import hunt.imf.io.server;
+public import hunt.imf.io.clientext;
 
 public import hunt.imf.protocol.packet;
 
