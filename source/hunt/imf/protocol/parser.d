@@ -41,7 +41,7 @@ class Parser
                     
                     if(message_data_len == 0)
                     {
-                        int64_t message_id = bigEndianToNative!int64_t(headerbuffer[8 .. 16]);
+                        long message_id = bigEndianToNative!long(headerbuffer[8 .. 16]);
                         result ~= new Packet(message_id);
                         headerlen = 0;
                     }
@@ -60,7 +60,7 @@ class Parser
                 
                 if( left >= message_data_len - message_data.length)
                 {
-                    int64_t message_id = bigEndianToNative!int64_t(headerbuffer[8 .. 16]);
+                    long message_id = bigEndianToNative!long(headerbuffer[8 .. 16]);
                     used = message_data_len - message_data.length;
                     message_data ~= buffer[index .. index + used];
                     result ~= new Packet(message_id , message_data);
