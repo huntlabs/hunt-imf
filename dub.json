@@ -1,18 +1,17 @@
 {
     "name": "hunt-imf",
     "description": "A tcp-server framework.",
-    "copyright": "Copyright (c) 2017-2018, huntframework.com",
-    "homepage": "http://www.huntframework.com/",
+    "copyright": "Copyright (c) 2017-2019, HuntLabs",
+    "homepage": "http://www.huntlabs.net",
     "license": "Apache-2.0",
     "dependencies": {
         "protobuf": "~>0.4.0",
-        "hunt-net": "~>0.0.14"
+        "hunt-net": "~>0.1.0"
     },
     "configurations":[
         {
             "name" : "hunt-imf",
             "targetType": "library"
-    
         },
         {
             "targetName": "helloworld",
