@@ -39,9 +39,9 @@ class Server
                     _close(context);
             });
             sock.handler(
-                (ByteBuffer buffer) {
+                (in ubyte[] data) {
                     auto context = cast(Context)tcp.getAttachment();
-                    auto list = context.parser.consume(cast(byte[])buffer.getRemaining());
+                    auto list = context.parser.consume(cast(byte[])data);
                     foreach(p ; list)
                         _dispatcher.dispatch(context , p);
                 }

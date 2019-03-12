@@ -1,6 +1,6 @@
 module hunt.imf.io.client;
 
-import hunt.collection.ByteBuffer;
+
 import hunt.net;
 
 import hunt.imf.core.dispatcher;
@@ -48,9 +48,9 @@ class Client
                 if(_close !is null)
                     _close(context);
             });
-            tcp.handler((ByteBuffer buffer) {
+            tcp.handler((in ubyte[] data) {
                 auto context = cast(Context)tcp.getAttachment();
-                auto list = context.parser.consume(cast(byte[])buffer.getRemaining());
+                auto list = context.parser.consume(cast(byte[])data);
                 foreach(p ; list)
                     _dispatcher.dispatch(context , p);
                 });   
