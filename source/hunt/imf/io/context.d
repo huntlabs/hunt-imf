@@ -77,14 +77,14 @@ void sendMessage(M)(Context context,int64_t message_id , M m , VoidHandler finis
 {
     auto packet = new Packet(message_id ,  m.toProtobuf.array);
     auto data = packet.data;
-    context.sock.write(packet.data , finish);
+    context.sock.write(packet.data);
 }
 
 void sendMessage(Context context,int64_t message_id ,VoidHandler finish = null )
 {
     auto packet = new Packet(message_id);
     auto data = packet.data;
-    context.sock.write(packet.data , finish);
+    context.sock.write(packet.data);
 }
 
 void close(Context context)
