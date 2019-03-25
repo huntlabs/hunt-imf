@@ -6,7 +6,7 @@
     "license": "Apache-2.0",
     "dependencies": {
         "protobuf": "~>0.5.0",
-        "hunt-net": "~>0.1.0"
+        "hunt-net": "~>0.2.0"
     },
     "configurations":[
         {
